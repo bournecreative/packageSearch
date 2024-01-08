@@ -1,7 +1,7 @@
 import axios from "axios";
+import { ActionType } from "../reducer/reducer";
 import { Dispatch } from "redux";
-import { ActionType } from "../reducers/repositoryReducers";
-import { Action } from "../reducers/repositoryReducers";
+import { Action } from "../reducer/reducer";
 
 export const searchRepositories = (term: string) => {
   return async (dispatch: Dispatch<Action>) => {
@@ -18,7 +18,7 @@ export const searchRepositories = (term: string) => {
           },
         }
       );
-      const result = data.objects.map((obj: any) => obj.package.name);
+      const result = data.objects.map((obj: any) => obj.package);
       dispatch({
         type: ActionType.SEARCH_REPOSITORY_SUCCESS,
         payload: result,
