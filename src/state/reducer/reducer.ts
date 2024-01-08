@@ -30,7 +30,16 @@ export type Action =
   | SearchPackagesSuccess
   | SearchPackagesError;
 
-const reducer = (state: RepositoryState, action: Action): RepositoryState => {
+const initialState = {
+  loading: false,
+  error: null,
+  data: [],
+};
+
+const reducer = (
+  state: RepositoryState = initialState,
+  action: Action
+): RepositoryState => {
   switch (action.type) {
     case ActionType.SEARCH_REPOSITORY:
       return { loading: true, error: null, data: [] };
